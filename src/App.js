@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
+
+const number = 3;
+const flag = true;
+
 function App() {
   return (
     <div className="App">
@@ -9,6 +13,11 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <p style={{
+          color: 'red'
+        }}>Hello world</p>
+        <p>{number + number}</p>
+        <p>{flag ? 'Is TRUE' : 'is FALSE'}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
