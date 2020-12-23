@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/footer';
-import './App.css';
+import styles from './App.module.css';
 
 const todoItem = 'Создать новое приложение';
 const App =()=> {
@@ -18,8 +18,8 @@ const App =()=> {
   ];
 
   return (
-  <div className="wrap">
-    <h1 className="wrap__title">Важные дела:</h1>
+  <div className={styles.wrap}>
+    <h1 className={styles. title}>Важные дела:</h1>
     <p>InputItem</p>
     <hr />
     <ItemList items = {items}/>
