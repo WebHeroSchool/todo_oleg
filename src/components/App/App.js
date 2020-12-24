@@ -7,13 +7,16 @@ const todoItem = 'Создать новое приложение';
 const App =()=> {
   const items = [
     {
-      value: 'Написать приложение'
+      value: 'Написать приложение',
+      isDone: true
     },
     {
-      value: 'прописать пропсв'
+      value: 'прописать пропсв',
+      isDone: true
     },
     {
-      value: 'сделать все дела'
+      value: 'сделать все дела',
+      isDone: false
     }
   ];
 
