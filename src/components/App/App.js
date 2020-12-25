@@ -7,31 +7,34 @@ import styles from './App.module.css';
 const todoItem = 'Создать новое приложение';
 
 class App extends React.Component {
+    state = {
+      items: [
+        {
+          value: 'Написать приложение',
+          isDone: true
+        },
+        {
+          value: 'прописать пропсв',
+          isDone: true
+        },
+        {
+          value: 'сделать все дела',
+          isDone: false
+        }
+      ]
+    };
+
   render () {
-    const items = [
-      {
-        value: 'Написать приложение',
-        isDone: true
-      },
-      {
-        value: 'прописать пропсв',
-        isDone: true
-      },
-      {
-        value: 'сделать все дела',
-        isDone: false
-      }
-    ];
 
     return (
     <div className={styles.wrap}>
       <h1 className={styles.title}>Важные дела:</h1>
       <InputItem />
-      <ItemList items = {items}/>
+      <ItemList items = {this.state.items}/>
       <hr />
       <Footer count={3} />
-    </div>);
-  }
-}
+    </div>)
+  };
 
+}
 export default App;
