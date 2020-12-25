@@ -4,7 +4,12 @@ import Item from '../Item/Item';
 
 const ItemList =({items, onClickDone})=> (<ul>
   {items.map(item => <li key={item.value}>
-    <Item value={item.value} isDone={item.isDone} onClickDone={onClickDone} />
+    <Item
+      value={item.value}
+      isDone={item.isDone}
+      id={items.id}
+      onClickDone={onClickDone}
+      />
     </li>)}
 </ul>);
 
