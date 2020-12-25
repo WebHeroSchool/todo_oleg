@@ -7,27 +7,31 @@ import styles from './App.module.css';
 const todoItem = 'Создать новое приложение';
 
 class App extends React.Component {
-    state = {
-      items: [
-        {
-          value: 'Написать приложение',
-          isDone: true
-        },
-        {
-          value: 'прописать пропсв',
-          isDone: true
-        },
-        {
-          value: 'сделать все дела',
-          isDone: false
-        }
-      ]
-    };
 
-    counstructor (props) {
+  state = {
+    items: [
+      {
+        value: 'Написать приложение',
+        isDone: true
+      },
+      {
+        value: 'прописать пропсв',
+        isDone: true
+      },
+      {
+        value: 'сделать все дела',
+        isDone: false
+      }
+    ]
+  };
+
+
+    constructor (props) {
     	    super(props);
 
           this.onClickDone = this.onClickDone.bind(this);
+
+
     }
 
 
