@@ -59,7 +59,7 @@ class App extends React.Component {
       <InputItem />
       <ItemList items = {this.state.items} onClickDone={this.onClickDone} />
       <hr />
-      <Footer count={this.state.count} onClick={this.onClickFooter}/>
+      <Footer count={this.state.count} onClickFooter={this.onClickFooter}/>
     </div>)
   };
 
