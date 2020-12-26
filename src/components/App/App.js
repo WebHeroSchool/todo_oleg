@@ -26,7 +26,7 @@ class App extends React.Component {
         id: 3
       }
     ],
-    count: 6
+    count: 0
   };
 
 
@@ -69,9 +69,7 @@ onClickAdd = value => {
 }
 
 
-  onClickFooter=()=>{
-    this.setState(state=>({count: state.count -1}))
-  };
+
 
 
 
@@ -84,7 +82,7 @@ onClickAdd = value => {
       <InputItem onClickAdd={this.onClickAdd} />
       <ItemList items = {this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete}/>
       <hr />
-      <Footer count={this.state.count} onClickFooter={this.onClickFooter}/>
+      <Footer count={this.state.count}/>
     </div>)
   };
 
