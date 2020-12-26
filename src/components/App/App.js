@@ -31,17 +31,27 @@ class App extends React.Component {
 
 
   onClickDone = id => {
-    console.log (id);
-    const newItemList = this.state.items.map(item => {
-      const newItem = {...item};
-      if (item.id === id) {
-        newItem.isDone = !item.isDone;
-      }
-      return newItem;
-    });
-    this.setState({items: newItemList})
-  };
+  const newItemList = this.state.items.map(item => {
+    const newItem = {...item};
+    if (item.id === id) {
+      newItem.isDone = !item.isDone;
+    }
+    return newItem;
+  });
+  this.setState({items: newItemList})
+};
 
+
+onClickDelete = id => {
+ const newItemList = this.state.items.filter(item => {
+          const newItem = {...item};
+          if (item.id !== id) {
+              return newItem;
+          }
+
+      });
+      this.setState({ items: newItemList});
+};
 
 
   onClickFooter=()=>{
@@ -57,7 +67,7 @@ class App extends React.Component {
     <div className={styles.wrap}>
       <h1 className={styles.title}>Важные дела:</h1>
       <InputItem />
-      <ItemList items = {this.state.items} onClickDone={this.onClickDone} />
+      <ItemList items = {this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete}/>
       <hr />
       <Footer count={this.state.count} onClickFooter={this.onClickFooter}/>
     </div>)
