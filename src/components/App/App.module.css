@@ -1,0 +1,41 @@
+.wrap {
+  margin: auto;
+  width: 300px;
+  font-family: Roboto;
+  font-size: 20px;
+  background: #f9fafe;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: Helvetica;
+}
+
+.title {
+  color: #2074f8;
+}
+
+
+.footer {
+  color: grey;
+}
+
+.wrap  ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.wrap li {
+  background: #fff;
+  margin: 12px;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 2px rgba(221, 221, 221, 1);
+}
+
+.item {
+  color: black;
+}
+
+.done {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
