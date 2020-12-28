@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from '../App/App.module.css';
+import PropTypes from 'prop-types';
 
 
 class Item extends React.Component {
@@ -28,6 +29,11 @@ class Item extends React.Component {
     )
   }
 }
+
+Item.defaultProps = {
+  isDone: false,
+};
+
 
 
 

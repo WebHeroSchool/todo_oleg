@@ -68,12 +68,6 @@ onClickAdd = value => {
   }));
 }
 
-
-
-
-
-
-
   render () {
 
     return (

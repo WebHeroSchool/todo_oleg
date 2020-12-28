@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styles from '../App/App.module.css';
+import PropTypes from 'prop-types';
 
 
 class InputItem extends React.Component {
@@ -47,6 +48,7 @@ class InputItem extends React.Component {
       </div>);
     }
 }
+
 
 
 export default InputItem;
