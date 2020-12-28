@@ -5,50 +5,55 @@ import styles from '../App/App.module.css';
 import PropTypes from 'prop-types';
 
 
+
 class InputItem extends React.Component {
-    state = {
-      inputValue: ''
-    };
+  state = {
+    inputTask: ''
+  };
 
-    onButtonClick = ()=> {
-
-      if(this.state.inputValue == '' || this.state.inputValue == 'Какие у вас задачи?') {
-        this.setState({
-          inputValue: 'Какие у вас задачи?'
-        });
-    }
-    else {
+  onButtonClick = () => {
+    if(this.state.inputTask == '' || this.state.inputTask == 'Какие у вас задачи?') {
       this.setState({
-        inputValue: ''
+        inputTask: 'Какие у вас задачи?'
       });
-      this.props.onClickAdd(this.state.inputValue.toUpperCase());
-    }
   }
-
-    render () {
-      const {onClickAdd} = this.props;
-      return (<div>
-          <TextField
-              id="standard-dense"
-              label="Добавить задание"
-              margin="dense"
-              fullWith
-              value = {this.state.inputValue}
-              onChange={event=>this.setState({inputValue: event.target.value})}
-          />
-          <Button
-            variant='contained'
-            color='primary'
-            size='large'
-            className={styles.but}
-            onClick={this.onButtonClick}
-            >
-            Добавить
-            </Button>
-      </div>);
+  else {
+    this.setState({
+      inputTask: ''
+    });
+    this.props.onClickAdd(this.state.inputTask.toUpperCase());
     }
-}
+  };
+
+  render() {
+    const { onClickAdd } = this.props;
+
+    return (<div>
+      <TextField
+        id="standard-dense"
+        label="Добавить задание"
+        margin="dense"
+        fullWith
+        value = {this.state.inputTask}
+        onChange={event=>this.setState({inputTask: event.target.value})}
+      />
+      <Button
+      variant='contained'
+      color='primary'
+      size='large'
+      className={styles.but}
+      onClick={this.onButtonClick}
+      >
+        Добавить
+      </Button>
+    </div>);
+  }
+};
 
 
+
+InputItem.propTypes = {
+  onClickAdd: PropTypes.func.isRequired
+};
 
 export default InputItem;

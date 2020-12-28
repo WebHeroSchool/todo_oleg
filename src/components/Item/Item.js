@@ -5,43 +5,30 @@ import PropTypes from 'prop-types';
 
 
 class Item extends React.Component {
-  componentDidMount (){
-    this.timerID = setInterval(() => console.log('Interval'), 1000);
-  };
-
-  // componentDidUpdate (){
-  //     console.log('componentDidUpdate');
-  // }
-
-  componentWillUnmount (){
-    clearInterval(this.timerID);
-  }
 
   render () {
-    const {value, isDone, onClickDone, onClickDelete, id} = this.props;
+    const {task, done, onClickDone, onClickDelete, id} = this.props;
     return (
       <div>
-      <span onClick={()=>onClickDone(id)}  className={classnames({[styles.item]: true, [styles.done]: isDone})}>
-      {value }
+      <span onClick={()=>onClickDone(id)}  className={classnames({[styles.item]: true, [styles.done]: done})}>
+      {task}
       </span>
       <span onClick={()=>onClickDelete(id)} className={styles.delete}>  X  </span>
       </div>
     )
   }
-}
-
-Item.defaultProps = {
-  isDone: false,
-};
-
-Item.propTypes = {
-  todoItem: PropTypes.array.isRequired,
-  isDone: PropTypes.bool,
-  onClickDone: PropTypes.func,
-  onClickDelete: PropTypes.func,
-  id: PropTypes.number.isRequired,
-};
+  };
 
 
 
-export default Item;
+
+  Item.defaultProps = {
+  	done: false
+  };
+
+  Item.propTypes = {
+  	done: PropTypes.bool.isRequired,
+  	task: PropTypes.string.isRequired
+  };
+
+  export default Item;
