@@ -32,6 +32,18 @@ const App = () => {
 	const [thingToDo, setThingToDo] = useState(initialState.thingToDo);
 	const [count, setCount] = useState(initialState.count);
 
+  useEffect(() => {
+    console.log('обновлено');
+});
+
+  useEffect(() => {
+    console.log('смонтировано');
+}, []);
+
+  useEffect(() => {
+    console.log('изменился count');
+}, [count]);
+
 	const onClickDone = id => {
 		const newItemList = thingToDo.map(item => {
 			const newItem = { ...item };
