@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from '../App/App.module.css';
+import PropTypes from 'prop-types';
 
 const Footer = ({count, onClickFooter})=> (<div  className={styles.footer} >Осталось выполнить: {count}</div>);
 
-Footer.defaultProps = {
+Footer.propTypes = {
 
-    count: 0
-
+     count: PropTypes.number.isRequired
 };
 export default Footer;
