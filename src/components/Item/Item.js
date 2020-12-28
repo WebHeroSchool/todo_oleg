@@ -34,6 +34,13 @@ Item.defaultProps = {
   isDone: false,
 };
 
+Item.propTypes = {
+  todoItem: PropTypes.array.isRequired,
+  isDone: PropTypes.bool,
+  onClickDone: PropTypes.func,
+  onClickDelete: PropTypes.func,
+  id: PropTypes.number.isRequired,
+};
 
 
 
