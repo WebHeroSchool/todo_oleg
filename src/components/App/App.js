@@ -26,7 +26,7 @@ class App extends React.Component {
         id: 3
       }
     ],
-    count: 0
+    count: 3
   };
 
 
@@ -45,12 +45,15 @@ class App extends React.Component {
 onClickDelete = id => {
  const newItemList = this.state.items.filter(item => {
           const newItem = {...item};
+
           if (item.id !== id) {
               return newItem;
           }
 
       });
+      this.setState(state=>({  count: state.count -1}));
       this.setState({ items: newItemList});
+
 };
 
 
@@ -67,12 +70,6 @@ onClickAdd = value => {
     count: state.count +1
   }));
 }
-
-
-
-
-
-
 
   render () {
 
