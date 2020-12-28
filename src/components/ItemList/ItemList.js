@@ -2,11 +2,11 @@ import React from 'react';
 import Item from '../Item/Item';
 
 
-const ItemList =({items, onClickDone, onClickDelete})=> (<ul>
-  {items.map(item => <li key={item.value}>
+const ItemList =({thingToDo, onClickDone, onClickDelete})=> (<ul>
+  {thingToDo.map(item => <li key={item.task}>
     <Item
-      value={item.value}
-      isDone={item.isDone}
+      task={item.task}
+      done={item.done}
       id={item.id}
       onClickDone={onClickDone}
       onClickDelete={onClickDelete}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/footer';
 import InputItem from '../InputItem/Inputitem';
@@ -6,84 +6,87 @@ import styles from './App.module.css';
 
 const todoItem = 'Создать новое приложение';
 
-class App extends React.Component {
 
-  state = {
-    items: [
-      {
-        value: 'Написать приложение',
-        isDone: true,
-        id: 1
-      },
-      {
-        value: 'прописать пропсв',
-        isDone: true,
-        id: 2
-      },
-      {
-        value: 'сделать все дела',
-        isDone: false,
-        id: 3
-      }
-    ],
-    count: 3
-  };
+const App = () => {
+	const initialState = {
+		thingToDo: [
+			{
+				task: 'Задача 1',
+				done: false,
+				id: 1
+			},
+			{
+				task: 'Задача 2',
+				done: false,
+				id: 2
+			},
+			{
+				task: 'Задача 3',
+				done: true,
+				id: 3
+			}
+		],
+		count: 3
+	};
 
+	const [thingToDo, setThingToDo] = useState(initialState.thingToDo);
+	const [count, setCount] = useState(initialState.count);
 
-  onClickDone = id => {
-  const newItemList = this.state.items.map(item => {
-    const newItem = {...item};
-    if (item.id === id) {
-      newItem.isDone = !item.isDone;
-    }
-    return newItem;
-  });
-  this.setState({items: newItemList})
-};
+  useEffect(() => {
+    console.log('обновлено');
+});
 
+  useEffect(() => {
+    console.log('смонтировано');
+}, []);
 
-onClickDelete = id => {
- const newItemList = this.state.items.filter(item => {
-          const newItem = {...item};
+  useEffect(() => {
+    console.log('изменился count');
+}, [count]);
 
-          if (item.id !== id) {
-              return newItem;
-          }
+	const onClickDone = id => {
+		const newItemList = thingToDo.map(item => {
+			const newItem = { ...item };
+			if (item.id === id) {
+				newItem.done = !item.done
+			};
+			return newItem;
+		});
+		setThingToDo(newItemList);
+	};
 
-      });
-      this.setState(state=>({  count: state.count -1}));
-      this.setState({ items: newItemList});
+	const onClickDelete = id => {
+		const newItemList = thingToDo.filter(item => item.id !== id);
+		setThingToDo(newItemList);
+		setCount((count) => count - 1)
+	};
 
-};
+	const onClickAdd = task => {
+		const newThingToDo = [
+			...thingToDo,
+			{
+				task,
+				done: false,
+				id: count + 1
+			}
+		];
+		setThingToDo(newThingToDo);
+		setCount((count) => count + 1);
+	};
 
-
-onClickAdd = value => {
-  this.setState(state=>({
-    items:[
-      ...state.items,
-      {
-        value,
-        isDone: false,
-        id: state.count +1
-      }
-    ],
-    count: state.count +1
-  }));
-}
-
-  render () {
-
-    return (
+	return (
     <div className={styles.wrap}>
       <h1 className={styles.title}>Важные дела:</h1>
-      <InputItem onClickAdd={this.onClickAdd} />
-      <ItemList items = {this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete}/>
+      <InputItem onClickAdd = {onClickAdd} />
+      <ItemList
+        thingToDo = {thingToDo}
+        onClickDone = {onClickDone}
+        onClickDelete = {onClickDelete}
+      />
       <hr />
-      <Footer count={this.state.count}/>
+      <Footer count={count}/>
     </div>)
-  };
 
-}
-
+};
 
 export default App;
