@@ -48,3 +48,27 @@
   float: right;
   padding-right: 5px;
 }
+
+.sidebar {
+  margin: auto;
+  width: 320px;
+  font-size: 20px;
+  background: #f9fafe;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #4046b9;
+  font: 700 18px/10px Helvetica;
+  margin: 5px;
+}
+
+.content {
+  margin: auto;
+	width: 400px;
+
+}
