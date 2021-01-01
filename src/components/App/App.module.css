@@ -35,6 +35,12 @@
   box-shadow: 0 0 4px 2px rgba(221, 221, 221, 1);
 }
 
+.wrap a {
+  text-decoration: none;
+  color: #4046b9;
+  font: 700 18px/10px Helvetica;
+}
+
 .item {
   color: black;
 }

@@ -4,9 +4,6 @@ import Footer from '../Footer/footer';
 import InputItem from '../InputItem/Inputitem';
 import styles from '../App/App.module.css';
 
-const todoItem = 'Создать новое приложение';
-
-
 const Todo = () => {
 	const initialState = {
 		thingToDo: [
