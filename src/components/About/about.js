@@ -62,7 +62,7 @@ class About extends React.Component {
           }
           <div >
             <div>
-              <img width="300px;" src={user.avatar_url} alt='Avatar'  />
+              <img width="300px;" src={user.avatar_url}  />
             </div>
             <div >
               <p><b>Привет! Меня зовут Олег.</b></p>

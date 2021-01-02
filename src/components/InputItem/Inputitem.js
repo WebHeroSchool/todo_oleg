@@ -12,7 +12,7 @@ class InputItem extends React.Component {
   };
 
   onButtonClick = () => {
-    if(this.state.inputTask == '' || this.state.inputTask == 'Какие у вас задачи?') {
+    if(this.state.inputTask === '' || this.state.inputTask === 'Какие у вас задачи?') {
       this.setState({
         inputTask: 'Какие у вас задачи?'
       });
@@ -26,14 +26,12 @@ class InputItem extends React.Component {
   };
 
   render() {
-    const { onClickAdd } = this.props;
 
     return (<div>
       <TextField
         id="standard-dense"
         label="Добавить задание"
         margin="dense"
-        fullWith
         value = {this.state.inputTask}
         onChange={event=>this.setState({inputTask: event.target.value})}
       />

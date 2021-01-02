@@ -1,16 +1,9 @@
-import React,{ useState, useEffect } from 'react';
-import ItemList from '../ItemList/ItemList';
-import Footer from '../Footer/footer';
-import InputItem from '../InputItem/Inputitem';
+import React from 'react';
 import styles from './App.module.css';
 import Todo from '../Todo/todo';
 import Contacts from '../Contacts/contacts';
 import About from '../About/about';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-
-const todoItem = 'Создать новое приложение';
-
 
 const App = () => (
   <Router>
