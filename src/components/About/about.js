@@ -68,7 +68,7 @@ class About extends React.Component {
               <p><b>Привет! Меня зовут Олег.</b></p>
               <p>GitHub ID: {user.id}</p>
               <p>GitHub login: {user.login}</p>
-              <p>GitHub url: <a href={user.html_url}> open </a></p>
+              <p>GitHub url: <a href="https://github.com/StrigunovOleg"> open </a></p>
             </div>
           </div>
           <div >
