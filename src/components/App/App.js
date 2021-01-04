@@ -9,9 +9,9 @@ const App = () => (
   <Router>
   <div className={styles.content}>
     <div className={styles.sidebar}>
-        <Link to='/'><a>ABOUT</a></Link>
-        <Link to='/todo'><a>TASKS</a></Link>
-        <Link to='/contacts'><a>CONTACTS</a></Link>
+        <Link to='/'>ABOUT</Link>
+        <Link to='/todo'>TASKS</Link>
+        <Link to='/contacts'>CONTACTS</Link>
     </div>
     <div>
     <Route path='/' exact component={About} />
