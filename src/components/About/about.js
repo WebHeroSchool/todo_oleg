@@ -68,7 +68,7 @@ class About extends React.Component {
               <p><b>Привет! Меня зовут Олег.</b></p>
               <p>GitHub ID: {user.id}</p>
               <p>GitHub login: {user.login}</p>
-              <p>GitHub url: <a href=''+{user.html_url}> open </a></p>
+
             </div>
           </div>
           <div >
@@ -78,7 +78,7 @@ class About extends React.Component {
               </b>
             </p>
               {repoList.map(repo => (<div key={repo.name}>
-                <a href=''+{repo.html_url}>{repo.name}</a>
+              
                 <p >{repo.description}</p>
               </div>))}
           </div>
