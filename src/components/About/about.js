@@ -7,11 +7,13 @@ const octokit = new Octokit();
 
 class About extends React.Component {
   state = {
-    user: [],
-    errorText: '',
     isLoading: true,
+    repolList: [],
+    nameUser: [],
+    infoUser: [],
+    avatarUser: [],
     isError: false,
-    repoList: [],
+    error: {}
   }
 
   componentDidMount() {
@@ -19,73 +21,50 @@ class About extends React.Component {
       username: 'StrigunovOleg'
     }).then(({ data }) => {
       this.setState({
-        repoList: data,
+        repolList: data,
         isLoading: false
+      });
+    }).catch(error => {
+      this.setState({
+        isError: true,
+        error: error
       })
-    }).catch(error => (this.setState({
-      isLoading: false,
-      isError: true,
-      errorText: error
-    })));
+    });
+
 
     octokit.users.getByUsername({
       username: 'StrigunovOleg'
-    }).then(({ data }) => {
+    }).then((response) => {
       this.setState({
-        user: data,
+        nameUser: response.data.login,
+        avatarUser: response.data.avatar_url,
+        infoUser: response.data.bio,
         isLoading: false
       })
-    }).catch(error => (this.setState({
-        isLoading: false,
+    }).catch(error => {
+      this.setState({
         isError: true,
-        errorText: error
-    })));
+        error: error
+      })
+    });
   }
 
-  render() {
-    const { user, errorText, isLoading, isError, repoList } = this.state;
-
-    return(
-      <div className = {styles.wrap}>
-        {isError ?
-          <div >
-            <h2 className={styles.title}>
-              Возникла проблема
-            </h2>
-            <span >{ errorText.message }</span>
-            <span >{ errorText.status }</span>
-          </div> : <>
-          {isLoading ? <LinearProgress /> :
-            <h1 className={styles.title}>
-              Обо мне
-            </h1>
-          }
-          <div >
-            <div>
-              <img width="300px;" src={user.avatar_url}  alt={user.login}/>
-            </div>
-            <div >
-              <p><b>Привет! Меня зовут Олег.</b></p>
-              <p>GitHub ID: {user.id}</p>
-              <p>GitHub login: {user.login}</p>
-
-            </div>
-          </div>
-          <div >
-            <p >
-            <b>
-              Мои репозитории:
-              </b>
-            </p>
-              {repoList.map(repo => (<div key={repo.name}>
-              
-                <p >{repo.description}</p>
-              </div>))}
-          </div>
-        </>}
-      </div>
-    )
+  render () {
+    const { isLoading, repolList, nameUser, infoUser, avatarUser } = this.state;
+    return (
+        <div className={styles.wrap}>
+          <h2 className={styles.name}>My name is { nameUser }</h2>
+          <p>{ infoUser }</p>
+          <img className={styles.img} src={avatarUser} alt={nameUser} />
+          <h1 className={styles.title}>{ isLoading ?  <LinearProgress /> : 'My  repositories'}</h1>
+          {!isLoading && <ol>
+            {repolList.map(repo => (<li className={styles.list} key={repo.id}>
+              {repo.name}
+              <a className={styles.link} href={repo.html_url}>Link to GitHub</a>
+            </li>))}
+          </ol>}
+        </div>
+    );
   }
 }
-
 export default About;
