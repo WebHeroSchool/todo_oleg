@@ -62,13 +62,13 @@ class About extends React.Component {
           }
           <div >
             <div>
-              <img width="300px;" src={user.avatar_url}  />
+              <img width="300px;" src={user.avatar_url}  alt={user.login}/>
             </div>
             <div >
               <p><b>Привет! Меня зовут Олег.</b></p>
               <p>GitHub ID: {user.id}</p>
               <p>GitHub login: {user.login}</p>
-              <p>GitHub url: <a href={user.html_url}>{user.html_url}</a></p>
+              <p>GitHub url: <a href={user.html_url}> open </a></p>
             </div>
           </div>
           <div >
