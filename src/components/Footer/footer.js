@@ -1,23 +1,30 @@
 import React from 'react';
 import styles from '../App/App.module.css';
-import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
-class Footer extends React.Component {
 
-render() {
-		const { count } = this.props;
-		return (
-			<div className={styles.footer}>Осталось выполнитьл: {count}.</div>
-		)
-	}
-};
+const Footer = ({ count, onClickFilter, filter, onClickDeleteComplited }) => {
 
-Footer.defaultProps = {
-	count: 0
-};
-
-Footer.propTypes = {
-	count: PropTypes.number.isRequired
+	return (<div className={styles.footer}>
+		<div className={styles.item}>
+			<ButtonGroup
+				task={filter}
+			>
+				<Button onClick={() => onClickFilter('all')}>Все</Button>
+				<Button onClick={() => onClickFilter('active')}>В работе</Button>
+				<Button onClick={() => onClickFilter('done')}>Завершенные</Button>
+			</ButtonGroup>
+		</div>
+		<div className={styles.item}>
+			<Button
+				size="small"
+				onClick={() => onClickDeleteComplited()}
+			>
+			</Button>
+		</div>
+		<span>Количество дел: {count} </span>
+	</div>)
 };
 
 export default Footer;
