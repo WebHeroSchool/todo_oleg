@@ -2,56 +2,63 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styles from '../App/App.module.css';
-import PropTypes from 'prop-types';
-
-
 
 class InputItem extends React.Component {
   state = {
-    inputTask: ''
+    inputValue: '',
+    error: false,
+    errorMessage: '',
+    items: []
   };
 
   onButtonClick = () => {
-    if(this.state.inputTask === '' || this.state.inputTask === 'Какие у вас задачи?') {
+    if (this.state.inputValue !== '') {
+      if (this.props.items.find((item) => this.state.inputValue === item.value)) {
+        this.setState({
+          error: true,
+          errorMessage: 'Ошибка, извините'
+        });
+      } else {
+        this.setState({
+          inputValue: '',
+          error: false,
+          errorMessage: ''
+        });
+        this.props.onClickAdd(this.state.inputValue);
+      }
+    } else {
       this.setState({
-        inputTask: 'Какие у вас задачи?'
+        error: true,
+        errorMessage: 'Ошибка, извините'
       });
-  }
-  else {
-    this.setState({
-      inputTask: ''
-    });
-    this.props.onClickAdd(this.state.inputTask.toUpperCase());
     }
-  };
-
-  render() {
-
-    return (<div>
-      <TextField
-        id="standard-dense"
-        label="Добавить задание"
-        margin="dense"
-        value = {this.state.inputTask}
-        onChange={event=>this.setState({inputTask: event.target.value})}
-      />
-      <Button
-      variant='contained'
-      color='primary'
-      size='large'
-      className={styles.but}
-      onClick={this.onButtonClick}
-      >
-        Добавить
-      </Button>
-    </div>);
   }
-};
-
-
-
-InputItem.propTypes = {
-  onClickAdd: PropTypes.func.isRequired
-};
+     ///vee
+  render () {
+    return (<div style={{ display: "flex" }} >
+          <TextField
+            id="standard-full-width"
+            label="Добавить задание"
+            helperText="Введите задачу для списка дел"
+            style={{ margin: 8 }}
+            fullWidth
+            margin="normal"
+            value={this.state.inputValue}
+            error={this.state.error}
+            onChange={(event) => this.setState({ inputValue: event.target.value })}
+          />
+          <Button
+            variant='contained'
+            color='primary'
+            size='normal'
+            className={styles.but}
+            onClick={this.onButtonClick}
+          >
+            Добавить
+          </Button>
+        </div>
+   );
+  }
+}
 
 export default InputItem;

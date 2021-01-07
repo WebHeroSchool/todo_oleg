@@ -1,6 +1,6 @@
 .wrap {
   margin: auto;
-  width: 320px;
+  width: 420px;
   font-family: Roboto;
   font-size: 20px;
   background: #f9fafe;
@@ -14,12 +14,13 @@
 }
 
 .but {
-  float: right;
+  height: 50px;
 }
 
 
 .footer {
   color: grey;
+  text-align: center;
 }
 
 .wrap  ul {
@@ -57,10 +58,10 @@
 
 .sidebar {
   margin: auto;
-  width: 320px;
+  width: 420px;
   font-size: 20px;
   background: #f9fafe;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   margin-bottom: 10px;
   text-align: center;
@@ -73,8 +74,44 @@
   margin: 5px;
 }
 
+.about_img {
+  width: 160px;
+  border-radius: 100px;
+  border: 3px solid white;
+}
+
+.about_repo {
+  background: #fff;
+  margin: 12px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 2px rgba(221, 221, 221, 1);
+}
+
+.about_repo a {
+  font-size: 22px;
+}
+
+.about_repo p {
+  color: lightgrey;
+}
+
+.me {
+  float: right;
+  padding: 10px;
+  font-size: 18px;
+}
+
 .content {
   margin: auto;
-	width: 400px;
-
+  width: 400px;
 }
+
+.contacts img {
+  width: 20px;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+
+

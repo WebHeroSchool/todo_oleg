@@ -17,7 +17,7 @@ class About extends React.Component {
   componentDidMount() {
     octokit.repos.listForUser({
       username: 'StrigunovOleg'
-    }).then(({ data }) => {
+    }).then(({data}) => {
       this.setState({
         repoList: data,
         isLoading: false
@@ -30,62 +30,55 @@ class About extends React.Component {
 
     octokit.users.getByUsername({
       username: 'StrigunovOleg'
-    }).then(({ data }) => {
+    }).then(({data}) => {
       this.setState({
         user: data,
         isLoading: false
       })
     }).catch(error => (this.setState({
-        isLoading: false,
-        isError: true,
-        errorText: error
+      isLoading: false,
+      isError: true,
+      errorText: error
     })));
   }
 
   render() {
-    const { user, errorText, isLoading, isError, repoList } = this.state;
+    const {user, errorText, isLoading, isError, repoList} = this.state;
 
-    return(
-      <div className = {styles.wrap}>
-        {isError ?
-          <div >
-            <h2 className={styles.title}>
-              Возникла проблема
-            </h2>
-            <span >{ errorText.message }</span>
-            <span >{ errorText.status }</span>
-          </div> : <>
-          {isLoading ? <LinearProgress /> :
-            <h1 className={styles.title}>
-              Обо мне
-            </h1>
-          }
-          <div >
-            <div>
-              <img width="300px;" src={user.avatar_url}  alt={user.login}/>
-            </div>
-            <div >
-              <p><b>Привет! Меня зовут Олег.</b></p>
-              <p>GitHub ID: {user.id}</p>
-              <p>GitHub login: {user.login}</p>
-              <p>GitHub url: <a href={user.html_url}> OPEN </a></p>
-            </div>
-          </div>
-          <div >
-            <p >
-            <b>
-              Мои репозитории:
-              </b>
-            </p>
-              {repoList.map(repo => (<div key={repo.name}>
-                <a href={repo.html_url}>{repo.name}</a>
-                <p >{repo.description}</p>
-              </div>))}
-          </div>
-        </>}
-      </div>
+    return (
+        <div className={styles.wrap}>
+          {isError ?
+              <div>
+                <h2 className={styles.title}>
+                  Возникла проблема
+                </h2>
+                <span>{errorText.message}</span>
+                <span>{errorText.status}</span>
+              </div> : <>
+                {isLoading ? <LinearProgress/> :
+                    <div>
+                      <h1 className={styles.title}>
+                        Обо мне
+                      </h1>
+                      <img className={styles.about_img} src={user.avatar_url} alt={user.login}/>
+                      <div className={styles.me}>
+                        <b>Привет! Меня зовут Олег.</b>
+                        <p><b>Frontend developer</b></p>
+                        <p>GitHub login: {user.login}</p>
+                        <p>GitHub url: <a href={user.html_url}> OPEN </a></p>
+                      </div>
+                      <p><b>Мои репозитории:</b></p>
+                      {repoList.map(repo => (<div key={repo.name} className={styles.about_repo}>
+                        <a href={repo.html_url}>{repo.name}</a>
+                        <p>{repo.description}</p>
+                      </div>))}
+                    </div>
+                }
+              </>}
+        </div>
     )
   }
+
 }
 
 export default About;
